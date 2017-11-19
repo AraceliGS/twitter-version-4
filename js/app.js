@@ -66,6 +66,15 @@ window.addEventListener('load', function() {
         $(button).addClass('disabled'); //  El método addClass me permite añadirle la clase disabled a la etiqueta button.
       }
     });
+  
+    textarea.addEventListener('keydown', function autosize() {
+      setTimeout(function() {
+        var height = textarea.classList;
+        textarea.classList.remove(textAreaHeight);
+        currentHeight = textarea.scrollHeight + 'px';
+        textarea.classList.add('textAreaHeight', currentHeight);
+      }, 0);
+    });
   });
 });
 
