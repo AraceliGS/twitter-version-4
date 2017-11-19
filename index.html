@@ -1,0 +1,40 @@
+<!-- Twitter Versión 0.0.4 -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Twitter's Newsfeed</title>
+    <link rel="stylesheet" href="css/main.css"> <!-- Enlazando mi archivo css con este archivo html -->
+  </head>
+  <body>
+    <!-- Encabezado -->
+    <header>
+      <h1>Twitter</h1>
+    </header>
+    <!-- Contenido principal -->
+    <main>
+      <div class="container">
+        <!-- Caja de presentación del usuario -->
+        <div class="user-intro">
+          <h3>Reto de Código</h3>
+          <p>Hola,<br>soy front-end developer jr.</p>
+          <hr>
+          <p id="code">Código</p>
+        </div>
+        <!-- Caja donde el usuario escribirá el mensaje-->
+        <div class="user-message">
+          <form>
+            <textarea id="comment" placeholder="¿Qué está pasando?"></textarea>
+          </form>
+          <hr>
+          <button type="submit" name="button">tweet</button>
+          <label id="counter"></label>
+        </div>
+      </div>
+      <!-- Sección dónde aparecerán las cajas con los mensajes ingresados -->
+      <section></section>
+    </main>
+    <script type="text/javascript" src="js/app.js"></script> <!-- Enlazando mi archivo js con este archivo html -->
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script> <!-- Enlazando mi archivo jQuery con este archivo html -->
+  </body>
+</html>
