@@ -22,7 +22,7 @@
     background-repeat: no-repeat;
     background-size: 100%;
     font-family: monospace;
-    width: 1366px || 100%;
+    width: 1366px;
   }
   
   /* Estilos para el encabezado */
@@ -51,10 +51,10 @@
   
   .container {
     margin: 0.5% auto 0;
-    max-width: 80%;
+    max-width: 86%;
     min-height: 350px;
     position: relative;
-    bottom: 15%;
+    bottom: 10%;
   }
   
   /* Estilos para el primer elemento div */
@@ -62,12 +62,11 @@
   .user-intro {
     display: inline-block;
     background-color: #FFF;
-    height: 300px; 
-    width: 620px; 
+    height: 270px; 
+    width: 48%; 
     line-height: 1.8em;
     position: relative;
-    top: 10px;
-    left: 130px; 
+    bottom: 3px;
   }
   
   h3 {
@@ -94,7 +93,6 @@
     font-size: 1.7em;
     font-weight: 700;
     text-transform: uppercase;
-    padding-top: 7px;
   }
   
   /* Estilos para el segundo elemento div*/
@@ -104,24 +102,22 @@
     background-color: #FFF;
     padding: 0 1%;
     height: 250px; 
-    width: 650px;  
+    width: 51%;  
     position: relative;
-    top: 25px;
-    left: 138px; 
+    top: 22px;
+    left: 8px; 
     overflow: auto;
   }
   
   textarea {
     outline: none;
+    height: 100px;
     width: 100%;
-    margin: 2.5% auto 1%;
+    margin: 2.5% auto 1.5%;
     border: none;
     display: block;
   }
-
-  .textAreaHeight {
-    height: 100px;
-  }
+  
   
   [placeholder] {
     font-size: 1.5em;
@@ -130,7 +126,7 @@
   
   .user-message hr {
     border: 1px solid #1F618D;
-    margin: 3% 0 5%;
+    margin: 4% 0 5.5%;
   }
   
   #counter {
@@ -184,11 +180,11 @@
   
   .divText {
     background-color: #FFF;
-    width: 90%;
+    width: 95%;
     height: 90px;
     color: #000;
     font-size: 1.5em;
     margin: 0 auto 30px;
-    padding-top: 15px;
-    padding-left: 15px;
+    padding: 15px 15px 0;
+    word-wrap: break-word;    
   }

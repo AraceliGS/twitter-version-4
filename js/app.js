@@ -4,16 +4,16 @@ window.addEventListener('load', function() {
   // Utilizo este método para que obtenga el primer valor cuyo selector de etiqueta sea button(botón).
   var button = document.querySelector('button'); 
   // El textarea ahora se le selecciona mediante su ID para utilizarlo en la función realizada con jQuery más abajo.
-  var textarea = document.getElementById('comment'); 
+  var textArea = document.getElementById('comment'); 
   // El label ahora se le selecciona mediante su ID para utilizarlo en la función realizada con jQuery más abajo.
   var label = document.getElementById('counter');
   // Estableciendo el evento click al elemento button.
   button.addEventListener('click', function() {
     // Condición if else que me permitirá habilitar y desabilitar mi botón dependiendo si tienen contenido o no. 
-    if (textarea.value !== '') { // Todo lo que está contenido en el if ocurrirá si es hay algo escrito en el textarea.
+    if (textArea.value !== '') { // Todo lo que está contenido en el if ocurrirá si es hay algo escrito en el textarea.
       var sectionDivs = document.getElementsByTagName('section')[0]; // Seleccionando a la sección que contendra  a los divs con los comentarios.
       var div = document.createElement('div'); // Creando un div.
-      var message = textarea.value; // Encapsulando lo escrito en el textarea en una variable.
+      var message = textArea.value; // Encapsulando lo escrito en el textarea en una variable.
       var text = document.createTextNode(message); // Creando un nodo de texto cuyo contenido es el valor de la variable message.
       div.appendChild(text); // Uniendo al nodo de texto 'text' con el nodo de tipo elemento div.
       sectionDivs.appendChild(div); // Uniendo al nodo de tipo elemento div con el nodo de tipo elemento section, para que el div sea contenido dentro de la sección.
@@ -29,7 +29,6 @@ window.addEventListener('load', function() {
     var currentCharacters = $('#comment').val().length; // Obteniendo el número de carácteres actuales.
     // Utilizando el método html para establecer a mi etiqueta label cuyo valor de su atributo ID es counter, el valor de la variable maxLength.
     $('#counter').html(maxLength);
-
     // Estableciendo el evento keyup a mi etiqueta textarea cuyo valor de su atributo ID es comment.
     $('#comment').keyup(function numberOfCharactersEntered() {
       var newCharacters = maxLength - $('#comment').val().length; // Estableciendo como valor a la variable newCharacters la resta entre el número máximo de caracteres aceptados y el número de caracteres ingresados hasta el momento .
@@ -66,15 +65,21 @@ window.addEventListener('load', function() {
         $(button).addClass('disabled'); //  El método addClass me permite añadirle la clase disabled a la etiqueta button.
       }
     });
-  
-    textarea.addEventListener('keydown', function autosize() {
-      setTimeout(function() {
-        var height = textarea.classList;
-        textarea.classList.remove(textAreaHeight);
-        currentHeight = textarea.scrollHeight + 'px';
-        textarea.classList.add('textAreaHeight', currentHeight);
-      }, 0);
+
+    textArea.addEventListener('keypress', function(event) { 
+      var ascii = event.keyCode; 
+      var textAreaContent = textArea.value;
+      var minNumberOfRows = textArea.getAttribute('rows');
+      console.log(ascii);
+      if (ascii === 13 && textAreaContent.length % 57 === 0) {
+        for (var i = minNumberOfRows; minNumberOfRows <= i + 1; minNumberOfRows++) {
+          var newRow = i + 1;
+          minNumberOfRows = newRow;
+          textArea.setAttribute('rows', newRow);
+        }
+      }
     });
   });
 });
+
 
