@@ -22,7 +22,7 @@
     background-repeat: no-repeat;
     background-size: 100%;
     font-family: monospace;
-    width: 1366px;
+    width: 100%;
   }
   
   /* Estilos para el encabezado */
@@ -166,7 +166,7 @@
 
   /* Estilos para el botón cuando está deshabilitado */
 
-  .disabled {
+  [disabled] {
     color: #A6ACAF;
     background-color: #EFEFEF;
   }

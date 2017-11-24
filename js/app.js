@@ -30,18 +30,22 @@ window.addEventListener('load', function() {
     // Utilizando el método html para establecer a mi etiqueta label cuyo valor de su atributo ID es counter, el valor de la variable maxLength.
     $('#counter').html(maxLength);
     // Estableciendo el evento keyup a mi etiqueta textarea cuyo valor de su atributo ID es comment.
-    $('#comment').keyup(function numberOfCharactersEntered() {
+    $('#comment').keydown(function numberOfCharactersEntered(event) {
       var newCharacters = maxLength - $('#comment').val().length; // Estableciendo como valor a la variable newCharacters la resta entre el número máximo de caracteres aceptados y el número de caracteres ingresados hasta el momento .
       $('#counter').html(newCharacters); // Utilizando el método html para establecer a mi etiqueta label cuyo valor de su atributo ID es counter, el valor de la variable newCharacters.
-
+      if (newCharacters >= 140) {
+        $(button).attr('disabled', 'true');
+      }
       if (newCharacters <= 140 && newCharacters >= 20) { // Esta condición se cumple cuando no se ha pasado de los 120 caracteres.
         $('#counter').addClass('allowed'); // El método addClass me permite añadirle clases a la etiqueta label.
         // Remuevo las clases restantes para que cuando quiera borrar caracteres, cambien de estilo según el número de caracteres y no se 'estanquen' en el último estilo aplicado.
         $('#counter').removeClass('not-many'); 
         $('#counter').removeClass('warning');
         $('#counter').removeClass('negative');
-        $(button).removeAttr('disabled', 'true'); // Este método me permite asignarle al botón el atributo disabled(deshabilitado en español)al button cuyo valor es true para que lo deshabilite.
-        $(button).removeClass('disabled'); 
+        if (newCharacters < 140 && newCharacters >= 20) {
+          $(button).removeAttr('disabled', 'true'); // Este método me permite asignarle al botón el atributo disabled(deshabilitado en español)al button cuyo valor es true para que lo deshabilite.
+          $(button).removeClass('disabled'); 
+        }
       } else if (newCharacters < 20 && newCharacters >= 10) { // Esta condición se cumple cuando se ha pasado de los 120 caracteres, pero no de los 130.
         $('#counter').addClass('not-many');
         $('#counter').removeClass('allowed');
@@ -64,18 +68,15 @@ window.addEventListener('load', function() {
         $(button).attr('disabled', 'true'); 
         $(button).addClass('disabled'); //  El método addClass me permite añadirle la clase disabled a la etiqueta button.
       }
-    });
 
-    textArea.addEventListener('keypress', function(event) { 
-      var ascii = event.keyCode; 
-      var textAreaContent = textArea.value;
-      var minNumberOfRows = textArea.getAttribute('rows');
-      console.log(ascii);
-      if (ascii === 13 && textAreaContent.length % 57 === 0) {
-        for (var i = minNumberOfRows; minNumberOfRows <= i + 1; minNumberOfRows++) {
-          var newRow = i + 1;
-          minNumberOfRows = newRow;
-          textArea.setAttribute('rows', newRow);
+      var tweetArea = event.target.value.split('');
+      var acum = 0;
+      for (var i = 0; i < tweetArea.length; i++) {
+        if (tweetArea[i] === '\n') {
+          acum++;
+        }
+        if (acum) {
+          event.target.rows = acum + 2;
         }
       }
     });
